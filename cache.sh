@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
 build_with_cache() {
-  if [[ -d "$RENDER_ROOT"/public ]]; then
+  if [[ -d "$XDG_CACHE_DIR"/public ]]; then
     echo "Copying cached public dir"
-    cp -rf "$RENDER_ROOT"/public public
+    ln -s -f "$XDG_CACHE_DIR"/public public
   else
     echo "No cached public dir found"
   fi
@@ -13,7 +13,7 @@ build_with_cache() {
   gatsby build
 
   echo "Done, caching public dir"
-  cp -rf public "$RENDER_ROOT"/public
+  ln -s public "$XDG_CACHE_DIR"
 }
 
 if [[ "$RENDER" ]]; then
