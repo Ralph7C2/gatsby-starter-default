@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 
+set -euxo pipefail
+
 build_with_cache() {
-  if [[ -d "$XDG_CACHE_DIR"/public ]]; then
+  if [[ -d "$XDG_CACHE_HOME"/public ]]; then
     echo "Copying cached public dir"
-    ln -s -f "$XDG_CACHE_DIR"/public public
+    ln -s -f "$XDG_CACHE_HOME"/public public
   else
     echo "No cached public dir found"
   fi
@@ -13,7 +15,7 @@ build_with_cache() {
   gatsby build
 
   echo "Done, caching public dir"
-  ln -s -f -L public "$XDG_CACHE_DIR"
+  ln -s -f -L public "$XDG_CACHE_HOME/public"
 }
 
 if [[ "$RENDER" ]]; then
