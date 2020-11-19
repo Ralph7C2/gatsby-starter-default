@@ -16,8 +16,8 @@ build_with_cache() {
   cp -rf public "$RENDER_ROOT"/public
 }
 
-if [[ ""$RENDER" ]]; then
+if [[ "$RENDER" ]]; then
   build_with_cache
 else
   gatsby build
-
+fi
