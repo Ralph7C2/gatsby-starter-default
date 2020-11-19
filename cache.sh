@@ -13,7 +13,7 @@ build_with_cache() {
   gatsby build
 
   echo "Done, caching public dir"
-  ln -s public "$XDG_CACHE_DIR"
+  ln -s -f -L public "$XDG_CACHE_DIR"
 }
 
 if [[ "$RENDER" ]]; then
