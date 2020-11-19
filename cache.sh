@@ -8,7 +8,8 @@ else
 fi
 
 echo "Building"
-echo $(gatsby build)
+
+gatsby build
 
 echo "Done, caching public dir"
 cp -rf public "$RENDER_ROOT"/public
